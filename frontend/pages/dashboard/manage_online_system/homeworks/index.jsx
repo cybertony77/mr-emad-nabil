@@ -9,6 +9,7 @@ import AttendanceWeekSelect from '../../../../components/AttendanceWeekSelect';
 import TimerSelect from '../../../../components/TimerSelect';
 import { TextInput, ActionIcon, useMantineTheme } from '@mantine/core';
 import { IconSearch, IconArrowRight } from '@tabler/icons-react';
+import { useSystemConfig } from '../../../../lib/api/system';
 import HomeworkAnalyticsChart from '../../../../components/HomeworkAnalyticsChart';
 
 function InputWithButton(props) {
