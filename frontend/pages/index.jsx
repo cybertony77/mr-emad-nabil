@@ -895,7 +895,7 @@ export default function Login() {
         <div className="login-container">
           <div className="logo-section">
             <Image src="/logo.png" alt="Logo" width={90} height={90} className="logo-icon" style={{ borderRadius: '50px' }} priority />
-            <h1 className="title">Application Login (Demo)</h1>
+            <h1 className="title">Application Login</h1>
             <p className="subtitle">Welcome back! Please sign in to continue</p>
           </div>
 

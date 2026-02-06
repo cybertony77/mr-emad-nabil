@@ -569,13 +569,11 @@ Best regards
                           }}
                           onMouseEnter={(e) => {
                             if (copiedCodeId !== (vac.account_id?.toString() || vac._id?.toString())) {
-                              e.target.style.backgroundColor = '#b91c1c';
                               e.target.style.borderColor = '#b91c1c';
                             }
                           }}
                           onMouseLeave={(e) => {
                             if (copiedCodeId !== (vac.account_id?.toString() || vac._id?.toString())) {
-                              e.target.style.backgroundColor = '#d71d1d';
                               e.target.style.borderColor = '#d71d1d';
                             }
                           }}

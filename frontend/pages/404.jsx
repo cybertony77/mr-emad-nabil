@@ -104,7 +104,7 @@ export default function Custom404() {
           .error-code {
             font-size: 8rem;
             font-weight: 900;
-            background: linear-gradient(135deg, #1FA8DC 0%, #FEB954 100%);
+            background: linear-gradient(90deg, #089caa, #7ad659,rgb(81, 179, 57));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -123,7 +123,7 @@ export default function Custom404() {
             transform: translateX(-50%);
             width: 80px;
             height: 4px;
-            background: linear-gradient(135deg, #1FA8DC 0%, #FEB954 100%);
+            background: linear-gradient(90deg, #089caa, #7ad659,rgb(81, 179, 57));
             border-radius: 2px;
           }
           

@@ -24,7 +24,7 @@ function Preloader() {
       left: 0,
       width: '100%',
       height: '100%',
-      background: 'linear-gradient(380deg, #1FA8DC 0%, #FEB954 100%)',
+      background: 'linear-gradient(90deg,rgba(8, 156, 170, 1) 0%, rgba(87, 199, 133, 1) 50%, rgba(89, 179, 57, 1) 100%)',
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',

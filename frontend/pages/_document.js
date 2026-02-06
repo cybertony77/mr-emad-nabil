@@ -15,10 +15,10 @@ export default function Document() {
         <meta name="mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-        <meta name="apple-mobile-web-app-title" content="Demo Attendance System" />
+        <meta name="apple-mobile-web-app-title" content="Mr. Emad Nabil Students" />
         <meta name="apple-touch-fullscreen" content="yes" />
-        <meta property="og:title" content="Demo Attendance System" />
-        <meta property="og:description" content="Attendance System for learning teachers" />
+        <meta property="og:title" content="Mr. Emad Nabil Students" />
+        <meta property="og:description" content="Mr. Emad Nabil Students Management System" />
         <meta property="og:image" content="/icons/apple-icon-180.png" />
         <meta property="og:type" content="website" />
         <meta property="og:locale" content="en_US" />

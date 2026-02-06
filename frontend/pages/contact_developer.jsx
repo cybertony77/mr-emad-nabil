@@ -572,8 +572,8 @@ export default function ContactDeveloperPage() {
               }
               
               .contact-icon {
-                width: 45px;
-                height: 45px;
+                width: 55px;
+                height: 55px;
                 font-size: 18px;
               }
               
