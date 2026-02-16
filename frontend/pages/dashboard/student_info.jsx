@@ -1069,10 +1069,12 @@ export default function StudentInfo() {
                       <div className="detail-label">Total Absent Sessions</div>
                       <div className="detail-value" style={{ color: '#dc3545', fontWeight: 600 }}>{totals.absent}</div>
                     </div>
+                    {/* HIDDEN: Homework section hidden
                     <div className="detail-item" onClick={() => openDetails('hw')} style={{ cursor: 'pointer' }}>
                       <div className="detail-label">Total Missing Homework</div>
                       <div className="detail-value" style={{ color: '#fd7e14', fontWeight: 600 }}>{totals.missingHW}</div>
                     </div>
+                    */}
                     <div className="detail-item" onClick={() => openDetails('quiz')} style={{ cursor: 'pointer' }}>
                       <div className="detail-label">Total Unattend Quizzes</div>
                       <div className="detail-value" style={{ color: '#1FA8DC', fontWeight: 600 }}>{totals.unattendQuiz}</div>
@@ -1103,7 +1105,9 @@ export default function StudentInfo() {
                     <Table.Tr>
                       <Table.Th style={{ width: '120px', minWidth: '120px', textAlign: 'center' }}>Week</Table.Th>
                       <Table.Th style={{ width: '120px', minWidth: '120px', textAlign: 'center' }}>Attendance Info</Table.Th>
+                      {/* HIDDEN: Homework column hidden
                       <Table.Th style={{ width: '120px', minWidth: '120px', textAlign: 'center' }}>Homework</Table.Th>
+                      */}
                       <Table.Th style={{ width: '140px', minWidth: '140px', textAlign: 'center' }}>Homework Video</Table.Th>
                       <Table.Th style={{ width: '120px', minWidth: '120px', textAlign: 'center' }}>Quiz Degree</Table.Th>
                       <Table.Th style={{ width: '200px', minWidth: '200px', textAlign: 'center' }}>Comment</Table.Th>
@@ -1129,6 +1133,7 @@ export default function StudentInfo() {
                               {weekData.attended ? (weekData.lastAttendance || '✅ Yes') : '❌ Absent'}
                             </span>
                           </Table.Td>
+                          {/* HIDDEN: Homework column hidden
                           <Table.Td style={{ width: '120px', minWidth: '120px', textAlign: 'center' }}>
                             {(() => {
                               if (weekData.hwDone === "No Homework") {
@@ -1144,7 +1149,6 @@ export default function StudentInfo() {
                                   fontSize: '1rem'
                                 }}>⚠️ Not Completed</span>;
                               } else if (weekData.hwDone === true) {
-                                // Show homework degree if it exists
                                 const hwDegree = weekData.hwDegree;
                                 if (hwDegree && String(hwDegree).trim() !== '') {
                                   return <span style={{ 
@@ -1167,6 +1171,7 @@ export default function StudentInfo() {
                               }
                             })()}
                           </Table.Td>
+                          */}
                           <Table.Td style={{ width: '140px', minWidth: '140px', textAlign: 'center' }}>
                             {weekData.view_homework_video === true ? (
                               <span style={{ 

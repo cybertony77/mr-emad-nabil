@@ -1034,13 +1034,14 @@ export default function SessionInfo() {
         {/* Table toggles and table */}
         <div className="table-container" style={{ margin: '24px 0', background: '#fff', borderRadius: 12, padding: '18px', boxShadow: '0 2px 8px rgba(0,0,0,0.07)' }}>
           <div style={{ display: 'flex', gap: 8, marginBottom: 16, justifyContent: 'center', flexWrap: 'wrap' }}>
+            {/* HIDDEN: Show HW button hidden
             <button
               className={`table-toggle-btn ${showHW ? 'active' : ''}`}
               onClick={() => setShowHW(v => !v)}
             >
               {showHW ? 'Hide HW' : 'Show HW'}
             </button>
-            
+            */}
             <button
               className={`table-toggle-btn ${showQuiz ? 'active' : ''}`}
               onClick={() => setShowQuiz(v => !v)}

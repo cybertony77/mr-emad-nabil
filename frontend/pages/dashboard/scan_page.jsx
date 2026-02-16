@@ -1952,151 +1952,11 @@ export default function QR() {
                   ? '✅ Attended' 
                   : '❌ Absent'}
             </span>
-            <span className={`status-badge ${(() => {
-              // Always read from database - try rawStudent.weeks first, then fallback to student object
-              let dbHwDone = null;
-              
-              // Determine which week to use
-              let weekNumber = null;
-              if (selectedWeek) {
-                weekNumber = getWeekNumber(selectedWeek);
-              } else if (rawStudent?.weeks && rawStudent.weeks.length > 0) {
-                // If no selectedWeek, try to use week 1 or first available week
-                const week1Data = rawStudent.weeks.find(w => w && w.week === 1);
-                if (week1Data) {
-                  weekNumber = 1;
-                } else {
-                  // Use first week in array
-                  const firstWeek = rawStudent.weeks[0];
-                  if (firstWeek && firstWeek.week) {
-                    weekNumber = firstWeek.week;
-                  }
-                }
-              }
-              
-              if (rawStudent?.weeks && weekNumber) {
-                const weekData = rawStudent.weeks.find(w => w && w.week === weekNumber);
-                if (weekData) {
-                  dbHwDone = weekData.hwDone;
-                }
-              }
-              
-              // Fallback to student object or optimistic update
-              const currentHwDone = optimisticHwDone !== null ? optimisticHwDone : (dbHwDone ?? student?.hwDone ?? false);
-              
-              // Determine badge style based on database value
-              if (currentHwDone === "No Homework") {
-                return 'status-no-homework';
-              }
-              if (currentHwDone === "Not Completed") {
-                return 'status-incomplete';
-              }
-              if (currentHwDone === true) {
-                return 'status-attended'; // Green background for done
-              }
-              return 'status-not-attended'; // Red background for not done
-            })()}`}>
-              {(() => {
-                // Always read from database - try rawStudent.weeks first, then fallback to student object
-                let dbHwDone = null;
-                let dbHwDegree = null;
-                
-                // Determine which week to use
-                let weekToUse = selectedWeek;
-                let weekNumber = null;
-                
-                if (weekToUse) {
-                  weekNumber = getWeekNumber(weekToUse);
-                } else if (rawStudent?.weeks && rawStudent.weeks.length > 0) {
-                  // If no selectedWeek, try to use week 1 or first available week
-                  const week1Data = rawStudent.weeks.find(w => w && w.week === 1);
-                  if (week1Data) {
-                    weekNumber = 1;
-                  } else {
-                    // Use first week in array
-                    const firstWeek = rawStudent.weeks[0];
-                    if (firstWeek && firstWeek.week) {
-                      weekNumber = firstWeek.week;
-                    }
-                  }
-                }
-                
-                // First, try to read directly from rawStudent.weeks (source of truth)
-                if (rawStudent?.weeks && weekNumber) {
-                  const weekData = rawStudent.weeks.find(w => w && w.week === weekNumber);
-                  if (weekData) {
-                    dbHwDone = weekData.hwDone;
-                    dbHwDegree = weekData.hwDegree;
-                  }
-                }
-                
-                // Fallback to student object (which should be populated by updateStudentWithWeekData)
-                if (dbHwDone === null || dbHwDone === undefined) {
-                  dbHwDone = student?.hwDone;
-                }
-                if (dbHwDegree === null || dbHwDegree === undefined) {
-                  dbHwDegree = student?.hwDegree;
-                }
-                
-                // Use optimistic update if available, otherwise use database value
-                const currentHwDone = optimisticHwDone !== null ? optimisticHwDone : (dbHwDone ?? false);
-                const currentHwDegree = dbHwDegree ?? null;
-                
-                // Debug log to see what values we're working with
-                console.log('🏷️ Homework badge rendering:', {
-                  hasRawStudent: !!rawStudent,
-                  hasWeeks: !!rawStudent?.weeks,
-                  selectedWeek,
-                  weekNumber,
-                  weekData: rawStudent?.weeks?.find(w => w && w.week === weekNumber),
-                  dbHwDone,
-                  dbHwDoneType: typeof dbHwDone,
-                  dbHwDegree,
-                  studentHwDone: student?.hwDone,
-                  studentHwDegree: student?.hwDegree,
-                  optimisticHwDone,
-                  currentHwDone,
-                  currentHwDoneType: typeof currentHwDone,
-                  currentHwDegree,
-                  rawStudentWeeks: rawStudent?.weeks
-                });
-                
-                // If no attendance center or week selected, still show database value if available
-                if (!attendanceCenter || !selectedWeek) {
-                  // Still try to show database value even if week/center not selected
-                  if (currentHwDone === true) {
-                    if (currentHwDegree && String(currentHwDegree).trim() !== '') {
-                      return `✅ Homework: Done (${currentHwDegree})`;
-                    }
-                    return '✅ Homework: Done';
-                  }
-                  if (currentHwDone === "No Homework") {
-                    return '🚫 Homework: No Homework';
-                  }
-                  if (currentHwDone === "Not Completed") {
-                    return '⚠️ Homework: Not Completed';
-                  }
-                  return '❌ Homework: Not Done';
-                }
-                
-                // Always check database value first
-                if (currentHwDone === "No Homework") {
-                  return '🚫 Homework: No Homework';
-                }
-                if (currentHwDone === "Not Completed") {
-                  return '⚠️ Homework: Not Completed';
-                }
-                // Show homework degree if hwDone is true (from database or optimistic)
-                // Check for boolean true explicitly - this is the key check
-                if (currentHwDone === true) {
-                  if (currentHwDegree && String(currentHwDegree).trim() !== '') {
-                    return `✅ Homework: Done (${currentHwDegree})`;
-                  }
-                  return '✅ Homework: Done';
-                }
-                return '❌ Homework: Not Done';
-              })()}
+            {/* HIDDEN: Homework badge hidden
+            <span className="status-badge status-not-attended">
+              ❌ Homework: Hidden
             </span>
+            */}
             
             <span className={`status-badge ${(!attendanceCenter || !selectedWeek) 
               ? 'status-not-attended' 
@@ -2180,8 +2040,8 @@ export default function QR() {
                   : '✅ Mark as Attended'}
             </button>
 
-            {/* Homework Status Controls */}
-            <div className="homework-section">
+            {/* HIDDEN: Homework section hidden via display:none */}
+            <div className="homework-section" style={{ display: 'none' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
                 <span className="homework-label">HOMEWORK STATUS :</span>
                 <label className="homework-checkbox-label">

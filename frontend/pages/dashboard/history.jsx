@@ -691,7 +691,9 @@ export default function History() {
                     <Table.Th style={{ width: '100px', minWidth: '100px', textAlign: 'center' }}>Attendance Week</Table.Th>
                     <Table.Th style={{ width: '120px', minWidth: '120px', textAlign: 'center' }}>Main Center</Table.Th>
                     <Table.Th style={{ width: '140px', minWidth: '140px', textAlign: 'center' }}>Attendance Info</Table.Th>
+                    {/* HIDDEN: HW Status column hidden
                     <Table.Th style={{ width: '100px', minWidth: '100px', textAlign: 'center' }}>HW Status</Table.Th>
+                    */}
                     <Table.Th style={{ width: '100px', minWidth: '100px', textAlign: 'center' }}>Quiz Degree</Table.Th>
                     <Table.Th style={{ width: '160px', minWidth: '160px', textAlign: 'center' }}>Main Comment</Table.Th>
                     <Table.Th style={{ width: '160px', minWidth: '160px', textAlign: 'center' }}>Week Comment</Table.Th>
@@ -715,6 +717,7 @@ export default function History() {
                         </Table.Td>
                         <Table.Td style={{ width: '120px', minWidth: '120px', textAlign: 'center' }}>{record.main_center || 'N/A'}</Table.Td>
                         <Table.Td style={{ width: '140px', minWidth: '140px', textAlign: 'center' }}>{record.attendanceDate || 'N/A'}</Table.Td>
+                        {/* HIDDEN: HW Status column hidden
                         <Table.Td style={{ width: '100px', minWidth: '100px', textAlign: 'center' }}>
                           {(() => {
                             if (record.hwDone === "No Homework") {
@@ -728,7 +731,6 @@ export default function History() {
                                 fontWeight: 'bold'
                               }}>⚠️ Not Completed</span>;
                             } else if (record.hwDone === true) {
-                              // Show homework degree if it exists
                               const hwDegree = record.hwDegree;
                               if (hwDegree && String(hwDegree).trim() !== '') {
                                 return <span style={{ 
@@ -748,6 +750,7 @@ export default function History() {
                             }
                           })()}
                         </Table.Td>
+                        */}
                         
                         <Table.Td style={{ width: '100px', minWidth: '100px', textAlign: 'center' }}>
                           {(() => {
