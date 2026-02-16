@@ -126,8 +126,7 @@ const WhatsAppButton = ({ student, onMessageSent, onScoreUpdate }) => {
 نود إعلامكم أننا في:
 
 • الأسبوع: ${currentWeekNumber}
-• معلومات الحضور: ${attendanceInfo}
-• الواجب: ${homeworkStatus}`;
+• معلومات الحضور: ${attendanceInfo}`;
 
       // Add quiz degree if available
       if (quizDegreeText) {
