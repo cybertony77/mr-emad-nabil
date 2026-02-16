@@ -8,11 +8,12 @@ import QuizPerformanceChart from "./QuizPerformanceChart";
 
 export default function ChartTabs({ studentId, hasAuthToken = true }) {
   const router = useRouter();
-  const [active, setActive] = useState('homeworks'); // Default to homeworks tab
+  const [active, setActive] = useState('quizzes'); // Default to quizzes tab (homeworks tab hidden)
 
   return (
     <div className="chart-tabs-wrapper" style={{ marginTop: 24 }}>
       <div className="chart-tabs-buttons" style={{ display: 'flex', gap: 0, marginBottom: 12 }}>
+        {/* HIDDEN: Homework chart tab hidden
         <button
           onClick={() => setActive('homeworks')}
           className="chart-tab-button"
@@ -41,13 +42,14 @@ export default function ChartTabs({ studentId, hasAuthToken = true }) {
         >
           Homeworks
         </button>
+        */}
         <button
           onClick={() => setActive('quizzes')}
           className="chart-tab-button"
           style={{
             flex: 1,
             padding: '12px 16px',
-            borderRadius: '0 8px 8px 0',
+            borderRadius: '8px 8px 0 0',
             border: active === 'quizzes' ? '2px solid #1FA8DC' : '1px solid #dee2e6',
             background: active === 'quizzes' ? 'linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%)' : 'white',
             color: active === 'quizzes' ? '#1FA8DC' : '#6c757d',
@@ -72,8 +74,9 @@ export default function ChartTabs({ studentId, hasAuthToken = true }) {
       </div>
 
       <div className="chart-tabs-content" style={{ background: 'white', border: '1px solid #dee2e6', borderRadius: 12, padding: 20 }}>
+        {/* HIDDEN: Homework chart content hidden */}
         {active === 'homeworks' ? (
-          <ChartContent type="homeworks" studentId={studentId} hasAuthToken={hasAuthToken} />
+          null
         ) : (
           <ChartContent type="quizzes" studentId={studentId} hasAuthToken={hasAuthToken} />
         )}
