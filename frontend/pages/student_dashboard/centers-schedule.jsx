@@ -34,8 +34,8 @@ export default function CentersSchedule() {
     retry: 3,
     retryDelay: 1000,
     refetchOnMount: true,
-    refetchOnWindowFocus: true,
-    staleTime: 0,
+    refetchOnWindowFocus: false, // Disabled to prevent auto-refresh on window focus
+    staleTime: 2 * 60 * 1000, // Consider data fresh for 2 minutes
   });
 
   // Build schedule data filtered by student grade

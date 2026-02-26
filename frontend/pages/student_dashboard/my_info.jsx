@@ -65,13 +65,13 @@ export default function MyInfo() {
   // React Query hook with real-time updates - 5 second polling
   const { data: student, isLoading: studentLoading, error: studentError, refetch: refetchStudent, isRefetching, dataUpdatedAt } = useStudent(studentId, { 
     enabled: !!studentId,
-    // Refetch settings
-    refetchInterval: 30 * 60 * 1000, // Refetch every 30 minutes
-    refetchIntervalInBackground: false, // Don't refetch when tab is not active
-    refetchOnWindowFocus: true, // Immediate update when switching back to tab
+    // Refetch settings - background updates only
+    refetchInterval: false, // Disabled to prevent auto-refresh - use manual refetch if needed
+    refetchIntervalInBackground: false,
+    refetchOnWindowFocus: false, // Disabled to prevent auto-refresh on window focus
     refetchOnReconnect: true, // Refetch when reconnecting to internet
-    staleTime: 0, // Always consider data stale to force refetch
-    gcTime: 1000, // Keep in cache for only 1 second
+    staleTime: 2 * 60 * 1000, // Consider data fresh for 2 minutes
+    gcTime: 5 * 60 * 1000, // Keep in cache for 5 minutes
     refetchOnMount: true, // Always refetch when component mounts/page entered
   });
 

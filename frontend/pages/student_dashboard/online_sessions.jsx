@@ -196,9 +196,9 @@ export default function OnlineSessions() {
       const response = await apiClient.get('/api/online_sessions/student');
       return response.data;
     },
-    refetchInterval: 10 * 60 * 1000, // Auto-refresh every 10 minutes
-    refetchIntervalInBackground: false, // Don't refetch when tab is not active
-    refetchOnWindowFocus: true, // Refetch on window focus
+    refetchInterval: false, // Disabled to prevent auto-refresh - use manual refetch if needed
+    refetchIntervalInBackground: false,
+    refetchOnWindowFocus: false, // Disabled to prevent auto-refresh on window focus
     refetchOnMount: true, // Refetch on mount
     refetchOnReconnect: true, // Refetch on reconnect
   });
