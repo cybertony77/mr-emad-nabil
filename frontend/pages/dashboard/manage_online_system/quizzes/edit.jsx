@@ -2,7 +2,8 @@ import { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/router";
 import Title from '../../../../components/Title';
 import AttendanceWeekSelect from '../../../../components/AttendanceWeekSelect';
-import GradeSelect from '../../../../components/GradeSelect';
+import GradeSelect from '../../../../components\GradeSelect';
+import AccountStateSelect from '../../../../components/AccountStateSelect';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import apiClient from '../../../../lib/axios';
 import Image from 'next/image';
@@ -53,6 +54,7 @@ export default function EditQuiz() {
   const [loadingImages, setLoadingImages] = useState({});
   const [dragOverIndex, setDragOverIndex] = useState(null);
   const errorTimeoutRef = useRef(null);
+  const [accountState, setAccountState] = useState('Activated');
 
   // Auto-hide errors after 6 seconds
   useEffect(() => {
@@ -145,6 +147,7 @@ export default function EditQuiz() {
               question_explanation: ''
             }]
       });
+      setAccountState(quizData.state || quizData.account_state || 'Activated');
       setDataLoaded(true);
       dataLoadedRef.current = true; // Mark as loaded in ref
 
@@ -629,6 +632,9 @@ export default function EditQuiz() {
       show_details_after_submitting: formData.show_details_after_submitting,
     };
 
+    // Attach state (Activated/Deactivated)
+    submitData.state = accountState && accountState !== '' ? accountState : 'Activated';
+
     if (formData.questions && Array.isArray(formData.questions)) {
       submitData.questions = formData.questions.map(q => ({
         question_text: q.question_text || '',
@@ -776,6 +782,16 @@ export default function EditQuiz() {
                   {errors.week}
                 </div>
               )}
+            </div>
+
+            {/* Quiz State */}
+            <div style={{ marginBottom: '20px' }}>
+              <AccountStateSelect
+                value={accountState}
+                onChange={setAccountState}
+                label="Quiz State"
+                placeholder="Select State"
+              />
             </div>
 
             {/* Lesson Name */}
